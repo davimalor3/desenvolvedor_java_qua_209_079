@@ -1,0 +1,21 @@
+package com.counter.app;
+
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n;
+
+        System.out.println("Informe o valor:");
+        n = sc.nextInt();
+
+        while (n >= 1){
+            System.out.println(n-1);
+            n--;
+        }
+
+        sc.close();
+
+    }
+}

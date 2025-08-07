@@ -11,7 +11,7 @@ public class App {
 
         do{
             System.out.println("Informe uma opção:\n\n");
-            System.out.println("1 - CADASTRAR NOVO USUARIO USUARIO");
+            System.out.println("1 - CALCULAR IMC");
             System.out.println("2 - SAIR DO PROGRAMA");
             option = sc.nextInt();
 
@@ -25,6 +25,7 @@ public class App {
                 height = sc.nextDouble();
 
                 imc = peso/(height * height);
+                
 
                 if (imc < 18.5) System.out.println("\nAbaixo do peso!\n"+name+", procure um nutricionista!");
                 else if(imc >= 18.5 || imc <= 24.9) System.out.println("\nPeso normal!");

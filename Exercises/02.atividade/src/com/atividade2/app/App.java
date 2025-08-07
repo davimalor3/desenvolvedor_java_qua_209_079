@@ -64,8 +64,6 @@ public class App {
                     System.out.println("Opção Invalida!");
                     ticket = false;
                     quit = true;
-
-                    break;
             }
             
             if (authorize)

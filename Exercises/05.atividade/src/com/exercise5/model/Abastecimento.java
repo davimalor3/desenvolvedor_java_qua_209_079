@@ -1,7 +1,5 @@
 package com.exercise5.model;
 
-import javax.swing.JOptionPane;
-
 public class Abastecimento {
     private double etanol;
     private double gasoline;
@@ -32,10 +30,7 @@ public class Abastecimento {
     public String verificacao(){
 
        return (this.etanol <= (this.gasoline * 0.7)) 
-       ? JOptionPane.showMessageDialog(null, "Compensa mais abastecer com Etanol", null, JOptionPane.INFORMATION_MESSAGE);
-
-
-       "Compensa mais abastecer com Etanol" : "Compensa mais abastecer com Gasolina";
+       ? "Compensa mais abastecer com Etanol" : "Compensa mais abastecer com Gasolina";
     }
 }
 

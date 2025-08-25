@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- author -->
+    <meta name="author" content="Davi Nobre" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo optio sed culpa inventore fuga autem tempora, facilis dicta quaerat consectetur, fugiat expedita laboriosam ullam. Atque, magnam sed. In, maxime! Aliquid." />
+    <meta name="description" content="front-end system development in Senai" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h1>Forms</h1>
+    <hr/>
+    <form method="">
+        <label for="nome">Nome:</label><br/>
+        <input type="text" placeholder="Digite seu nome:" minlength="3" maxlength="32"/><br><br>
+        <label for="idade">Idade</label><br/>
+        <input type="number" value="18" min="12" max="65" /><br/><br>
+        <label for "dataNasc">Data Nascimento:</label><br>
+        <input type="date"><br><br>
+        <label for="password">Senha:</label><br>
+        <input type="password"><br><br>
+
+        <label for="genero">Genero:</label><br>
+        <input type="radio" name="Genero"><span>Masculino</span><br>
+        <input type="radio" name="Genero"><span>Feminino</span><br>
+        <input type="radio" name="Genero"><span>Outros</span><br>
+
+        <label for="escolaridade">Escolaridade</label><br>
+        <select>
+            <option name="escolaridade">Escolha uma opção...</option>
+            <option name="escolaridade">Ensino Fundamental</option>
+            <option name="escolaridade">Ensino Médio</option>
+            <option name="escolaridade">Ensino Superior</option>
+            <option name="escolaridade">Mestrado</option>
+            <option name="escolaridade">Doutorado</option>
+        </select><br><Br>
+
+        <label>Escolha as linguagens de programação que domina:</label>
+        <input type="checkbox" name="linguagens"><span>C</span><br>
+        <input type="checkbox" name="linguagens"><span>C++</span><br>
+        <input type="checkbox" name="linguagens"><span>C#</span><br>
+        <input type="checkbox" name="linguagens"><span>JAVA</span><br>
+        <input type="checkbox" name="linguagens"><span>PYTHON</span><br>
+        <input type="checkbox" name="linguagens"><span>JAVASCRIPT</span><br>
+        <input type="checkbox" name="linguagens"><span>RUBY</span><br><br>
+
+        <label>Digite um comentário</label><br>
+        <textarea value="" rows="5" cols="55">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum mollitia dolorem vel error! Consequuntur eum ducimus natus repellat, laborum voluptatibus quisquam. Ullam beatae qui laboriosam aspernatur voluptate vitae delectus. Veritatis?</textarea><br><BR>
+        
+        <label>Emvie um arquivo</label><br>
+        <input type="file"/><br><br>
+
+        <button type="submit">Cadastrar</button><br>
+        
+    </form>
+    
+</body>
+</html>

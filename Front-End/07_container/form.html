@@ -51,19 +51,144 @@
     <!-- INICIO CONTAINER -->
     <div class="container">
         <h1>Register</h1>
-        <hr />
+        <hr class="mb-5" />
         <form method="">
+
+            <!-- linha 1 -->
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-6 col-lg-7">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="name">Nome Completo</span>
-                        <input type="text" class="form-control" aria-label="Nome" aria-describedby="first name">
+                        <span class="input-group-text" id="null">Nome completo</span>
+                        <input type="text" class="form-control" aria-label="null" required>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6 col-lg-5">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="date">Data de Nascimento</span>
-                        <input type="date" class="form-control" aria-label="date" aria-describedby="dateNasc">
+                        <span class="input-group-text" id="null">Data de nascimento</span>
+                        <input type="date" class="form-control" aria-label="null" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">CPF</span>
+                            <input type="text" class="form-control" aria-label="null" placeholder="000.000.000-00"
+                                minlength="14" maxlength="14" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Telefone</span>
+                            <input type="tel" class="form-control" aria-label="null" placeholder="(00) 00000-0000"
+                                minlength="14" maxlength="15" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Email</span>
+                            <input type="email" class="form-control" aria-label="null" placeholder="user@email.com"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- linha 3 -->
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Gênero</label>
+                            <select class="form-select" id="null">
+                                <option selected>Informe seu Gênero</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                                <option value="3">Outro</option>
+                                <option value="4">Desejo não informar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Estado Cívil</label>
+                            <select class="form-select" id="null">
+                                <option selected>Informe seu Estado Cívil</option>
+                                <option value="1">Solteiro</option>
+                                <option value="2">Casado</option>
+                                <option value="3">Viúvo</option>
+                                <option value="4">Divorciado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Escolaridade</label>
+                            <select class="form-select" id="null">
+                                <option selected>Informe sua Escolaridade</option>
+                                <option value="1">Nível Fundamental</option>
+                                <option value="2">Nível Médio</option>
+                                <option value="3">Nível Superior</option>
+                                <option value="4">Pós-Graduação</option>
+                                <option value="5">Mestrado</option>
+                                <option value="6">Doutorado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- linha 4 -->
+                <div class="row">
+                    <div class="col-12 col-md-8 col-lg-4">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">CEP</span>
+                            <input type="text" class="form-control" aria-label="null" required placeholder="00.000-000"
+                                minlength="10" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-2">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">UF</span>
+                            <input type="text" class="form-control" aria-label="null" required minlength="2"
+                                maxlength="2">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Cidade</span>
+                            <input type="text" class="form-control" aria-label="null" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- linha 5 -->
+                <div class="row">
+                    <div class="col-12 col-md-8 col-lg-4">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Bairro</span>
+                            <input type="text" class="form-control" aria-label="null">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-4">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Logradouro</span>
+                            <input type="text" class="form-control" aria-label="null" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="null">Numero</span>
+                            <input type="text" class="form-control" aria-label="null" required maxlength="4">
+                        </div>
+                    </div>
+                </div>
+                <div class="container text-center">
+                    <div class="row justify-content-md-center">
+                    
+                        <div class="col-md-auto">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+
+                            <button type="submit" class="btn btn-primary">Cancelar</button>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

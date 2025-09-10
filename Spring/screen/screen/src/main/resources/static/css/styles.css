@@ -1,0 +1,20 @@
+marquee {
+    color: #990055
+    ;
+}
+
+.imagem {
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    box-shadow: 5px 5px 10px #fff;
+    border-radius: 10px;
+}
+
+.imagem figure {
+    border-radius: 10px;
+}
+
+h1 {
+    text-shadow: 3px 3px 5px #fff;
+}

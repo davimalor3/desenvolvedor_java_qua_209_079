@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Peoples</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body data-bs-theme="dark" class="bg-dark text-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index">
+                <i class="fas fa-search text-warning me-2"></i>
+                SearchPeoples
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index"><i
+                                class="fas fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register"><i
+                                class="fas fa-user-plus me-1"></i>Cadastrar Pessoa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search"><i class="fas fa-search me-1"></i>Buscar
+                            Desaparecidos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="display-4 fw-bold text-primary-emphasis mb-4">
+                    Cadastre uma pessoa desaparecida
+                </h1>
+            </div>
+
+            <!-- FORMULÁRIO  -->
+            <form method="POST">
+                <!-- LINHA 1 FORM -->
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-7">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Nome completo</span>
+                            <input type="text" name="name" class="form-control" id="nome" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Data de nascimento</span>
+                            <input type="date"  class="form-control" id="datanasc" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINHA 2 FORM -->
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">CPF</span>
+                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="000.000.000-00" minlength="14"
+                                maxlength="14" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-7">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Telefone</span>
+                            <input type="tel" class="form-control" id="tel" placeholder="(00) 00000-0000" minlength="14"
+                                maxlength="15" required>
+                        </div>
+                    </div>
+
+                    <!-- LINHA 3 FORM -->
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-5">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Email</span>
+                                <input type="text" name="email" class="form-control" id="email" placeholder="user@email.com"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Endereço</span>
+                                <input type="text" class="form-control" id="endereco" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- linha button -->
+                    <div class="row justify-content-md-center">
+
+                        <div class="col-md-auto">
+                            <button type="submit" class="btn btn-primary">Enviar Cadastro</button>
+                        </div>
+                    </div>
+                    <!-- fim button -->
+            </form>
+        </div>
+    </div>
+    <hr>
+    <!-- FOOTER -->
+    <footer class="bg-secondary text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 - Todos os direitos reswevados!</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

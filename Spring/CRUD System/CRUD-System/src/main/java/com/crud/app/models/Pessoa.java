@@ -19,11 +19,8 @@ public class Pessoa implements Serializable{
     private String email;
 
     // ======= constructor
-    public Pessoa(long idPessoa, String name, String cpf, String email) {
-        this.idPessoa = idPessoa;
-        this.name = name;
-        this.cpf = cpf;
-        this.email = email;
+    public Pessoa(){
+        
     }
 
     // ======= getters and setters

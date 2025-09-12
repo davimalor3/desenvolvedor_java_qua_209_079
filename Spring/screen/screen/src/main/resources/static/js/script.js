@@ -15,7 +15,6 @@ btn.addEventListener('submit', function(event){
     let cidade = document.querySelector('#cidade').value;
     let bairro = document.querySelector('#bairro').value;
     let logradouro = document.querySelector('#logradouro').value;
-    let complemento = document.querySelector('#complemento').value;
     let numero = document.querySelector('#numero').value;
 
     let result = `DADOS DO USUÁRIO:<br><br>
@@ -26,7 +25,6 @@ btn.addEventListener('submit', function(event){
     Cidade: ${cidade}<br>
     Bairo: ${bairro}<br>
     Logradouro: ${logradouro}<br>
-    Complemento: ${complemento}<br>
     Numero: ${numero}<br>`;
     document.querySelector('#result').innerHTML = result;
 

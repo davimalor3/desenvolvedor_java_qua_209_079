@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.crud.app.models.Pessoa;
 import com.crud.app.repository.AppRepository;
@@ -18,20 +19,21 @@ public class CrudController {
         return "index";
     }
 
+    // =========== CREATE - CRUD
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String register(){
         return "register";
     }
-    
-
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Pessoa usuario) {
         csr.save(usuario);
         return "redirect:/register";
     }
 
+    // ========== LIST - CRUD
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(){
-        return "search";
+    public ModelAndView search(){
+        ModelAndView mv = new ModelAndView("search");
+        return ;
     }
 }

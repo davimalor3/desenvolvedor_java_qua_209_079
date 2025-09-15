@@ -30,10 +30,13 @@ public class CrudController {
         return "redirect:/register";
     }
 
-    // ========== LIST - CRUD
+    // ========== READ - CRUD
+    // list to all registred users
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView search(){
         ModelAndView mv = new ModelAndView("search");
-        return ;
+        Iterable<Pessoa> users = csr.findAll();
+        mv.addObject("users", users);
+        return mv;
     }
 }

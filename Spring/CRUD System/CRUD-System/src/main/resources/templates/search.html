@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="https://thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="utf-8">
@@ -66,52 +66,14 @@
                             <th></th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Dada</td>
-                            <td>dada@test.com</td>
-                            <td>111.666.444-00</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-warning">Editar</button>
-                                <button type="button" class="btn btn-outline-info">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Lulu</td>
-                            <td>lulu@test.com</td>
-                            <td>@444.444.444-44</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-warning">Editar</button>
-                                <button type="button" class="btn btn-outline-info">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Mimi</td>
-                            <td>mim@test.com</td>
-                            <td>666.111.664-01</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-warning">Editar</button>
-                                <button type="button" class="btn btn-outline-info">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Dada</td>
-                            <td>dada@test.com</td>
-                            <td>111.666.444-00</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-warning">Editar</button>
-                                <button type="button" class="btn btn-outline-info">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Dada</td>
-                            <td>dada@test.com</td>
-                            <td>111.666.444-00</td>
+                    
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.idPessoa}"></td>
+                            <td th:text="${user.name}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.cpf}"></td>
                             <td>
                                 <button type="button" class="btn btn-outline-warning">Editar</button>
                                 <button type="button" class="btn btn-outline-info">Excluir</button>
@@ -121,7 +83,8 @@
                 </table>
             </div>
         </div>
-        < <!-- FOOTER -->
+
+         <!-- FOOTER -->
             <footer class="bg-secondary text-center py-3 mt-auto">
                 <div class="container">
                     <p class="mb-0">&copy; 2025 - Todos os direitos reswevados!</p>

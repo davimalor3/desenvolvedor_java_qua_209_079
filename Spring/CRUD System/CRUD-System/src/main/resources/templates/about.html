@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Peoples</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body data-bs-theme="dark" class="bg-dark text-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index">
+                <i class="fas fa-search text-warning me-2"></i>
+                SearchPeoples
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index"><i
+                                class="fas fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register"><i
+                                class="fas fa-user-plus me-1"></i>Cadastrar Pessoa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search"><i class="fas fa-search me-1"></i>Buscar
+                            Desaparecidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about"><i></i>About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="display-4 fw-bold text-info mb-4">
+                    Direto ao ponto: O que é CRUD?
+                </h1>
+                <img src="img/imgCrud.jpg" class="img-fluid" alt="image crud"><br><br>
+                <p class="lead text-light">
+                    A alguns anos quando eu ainda não tinha ideia do que era criar um sistema
+                    eu trabalhava no setor de EAD de uma faculdade, e uma colega do setor de TI falou sobre criar um
+                    CRUD.
+
+                    Ela falou tão naturalmente como se fosse algo tão simples que eu não tive coragem de perguntar o que
+                    significava.
+
+                    Foi somente depois de aprender a programar, aprender linguagem SQL e criar meu primeiro sistema que
+                    fui entender definitivamente o que era um CRUD.
+
+                    Então não sinta vergonha se você não souber ainda o que é isso, porque hoje você vai aprender!
+
+                    Afinal, o que é CRUD?
+                    CRUD literalmente significa Create, Read, Update e Delete, fim.
+
+                    Sério é só isso, tão simples quanto parece, é que assim como todas as áreas a nossa também tem suas
+                    terminologias que as vezes significam algo muito mais simples do que parece (exemplo: framework,
+                    ciclo de vida do componente, implantação x implementação, etc…)
+                </p><br>
+
+
+                <p class="lead text-light">
+                    Mas apesar de ser simples o CRUD é muito importante, pois ele representa as 4 operações básicas de
+                    um sistema.
+                    Por exemplo vamos imaginar um sistema bem básico, de lista telefônica.
+                </p>
+                <img src="img/imgcrud1.jpg" class="img-fluid" alt="image crud">
+                <br>
+                <br>
+
+                <p class="lead text-light">
+                    O nossos sistema deve dar a opção de criar um novo contato. (Create).
+                    Também deve dar a opção de buscarmos, ou seja ler um contato existente (Read).
+                    Caso queiramos também temos que conseguir atualizar um contato existente (Update).
+                    E também temos que ter a opção de excluir qualquer contato (Delete).
+                    Por ser algo tão usado no dia a dia dos programadores, existem varias bibliotecas que ajudam nessa
+                    tarefa, uma delas é o Sequelize
+                    uma biblioteca ORM, ou seja para bancos relacionais, como mySQL, postgree, MariaDB, etc. , que
+                    auxilia a integração do banco de dados com o backend.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-secondary text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 - Todos os direitos reswevados!</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

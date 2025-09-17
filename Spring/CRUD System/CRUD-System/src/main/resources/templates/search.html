@@ -76,12 +76,13 @@
                             <td th:text="${user.email}"></td>
                             <td th:text="${user.cpf}"></td>
                             <td>
-                                <button type="button" class="btn btn-outline-warning">Editar</button>
+                                <a class="btn btn-outline-warning" role="button" th:href="@('/updateuser/' + ${user.idPessoa})">Editar</a>
                                 <button type="button" class="btn btn-outline-info">Excluir</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <!-- FIM LISTA -->
 
                 <!-- COMPONENTE DE PAGINAÇÃO -->
                 <div>

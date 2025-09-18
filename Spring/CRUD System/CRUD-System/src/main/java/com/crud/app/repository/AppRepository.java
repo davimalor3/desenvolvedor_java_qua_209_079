@@ -1,6 +1,6 @@
 // package com.crud.app.repository;
 
-// import org.springframework.data.repository.CrudRepository;
+// 
 // import com.crud.app.models.Pessoa;
 
 
@@ -11,7 +11,6 @@
 
 
 package com.crud.app.repository;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.crud.app.models.Pessoa;
 

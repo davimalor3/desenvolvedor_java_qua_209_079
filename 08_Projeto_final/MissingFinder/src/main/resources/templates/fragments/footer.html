@@ -1,11 +1,38 @@
-<div class="container" th:fragment="footer">
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <!-- <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> -->
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+<!-- Footer -->
+    <footer class="footer" th:fragment="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 footer-section">
+                    <h4 class="footer-title">Me Encontre</h4>
+                    <p>Dedicados a reunir famílias e trazer esperança através da tecnologia e cooperação comunitária.</p>
+                
+                </div>
+                <div class="col-lg-2 footer-section">
+                    <h4 class="footer-title">Navegação</h4>
+                    <a href="/" class="footer-link">Início</a>
+                    <a href="/como-funciona" class="footer-link">Como Funciona</a>
+                    <a href="/register" class="footer-link">Registrar Caso</a>
+                    <a href="/buscar" class="footer-link">Buscar Pessoas</a>
+                </div>
+
+                <!-- TODO -->
+                <div class="col-lg-3 footer-section">
+                    <h4 class="footer-title">Recursos</h4>
+                    <a href="#" class="footer-link">Central de Ajuda</a>
+                    <a href="#" class="footer-link">Guia de Segurança</a>
+                    <a href="#" class="footer-link">Dicas de Prevenção</a>
+                    <a href="#" class="footer-link">Estatísticas</a>
+                </div>
+                <!-- TODO -->
+                <div class="col-lg-3 footer-section">
+                    <h4 class="footer-title">Contato</h4> 
+                    <p><i class="fas fa-phone me-2"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope me-2"></i> contato@encontre.com.br</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> São Paulo, SP</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Encontre - Sistema de Pessoas Desaparecidas. Todos os direitos reservados.</p>
+            </div>
+        </div>
     </footer>
-</div>

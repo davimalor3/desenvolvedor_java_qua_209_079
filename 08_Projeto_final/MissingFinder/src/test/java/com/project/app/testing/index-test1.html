@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro de Pessoas Desaparecidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .header-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-section {
+            padding: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), #5dade2);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(45deg, #2980b9, var(--accent-color));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #95a5a6, #bdc3c7);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(149, 165, 166, 0.3);
+        }
+
+        .photo-upload-area {
+            border: 3px dashed var(--accent-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(52, 152, 219, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-upload-area:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: #2980b9;
+            transform: scale(1.02);
+        }
+
+        .emergency-banner {
+            background: linear-gradient(45deg, var(--secondary-color), #c0392b);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .info-card {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--accent-color);
+            padding: 1rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 1rem;
+        }
+
+        .required-field::after {
+            content: ' *';
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .progress-indicator {
+            height: 4px;
+            background: #e9ecef;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), #5dade2);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            
+            .header-section {
+                padding: 1.5rem;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
+
+        .floating-label {
+            position: relative;
+        }
+
+        .floating-label input:focus + label,
+        .floating-label input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.8);
+            color: var(--accent-color);
+        }
+
+        .floating-label label {
+            position: absolute;
+            top: 0.75rem;
+            left: 1rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            background: white;
+            padding: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-container">
+            <!-- Header Section -->
+            <div class="header-section">
+                <div class="header-content">
+                    <i class="fas fa-search fa-3x mb-3"></i>
+                    <h1 class="display-4 fw-bold mb-2">Registro de Pessoas Desaparecidas</h1>
+                    <p class="lead mb-0">Ajude-nos a trazer pessoas desaparecidas de volta para casa</p>
+                </div>
+            </div>
+
+            <!-- Emergency Banner -->
+            <div class="form-section">
+                <div class="emergency-banner">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>EMERGÊNCIA:</strong> Se esta é uma situação de risco de vida, ligue para 190 imediatamente
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <!-- Information Card -->
+                <div class="info-card">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Importante:</strong> Por favor, forneça o máximo de informações precisas possível. Todos os campos marcados com * são obrigatórios.
+                </div>
+
+                <form id="missingPersonForm">
+                    <!-- Reporter Information Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-user-edit me-2"></i>Informações do Denunciante
+                            </h3>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="reporterName" class="form-label required-field">Seu Nome Completo</label>
+                            <input type="text" class="form-control" id="reporterName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="reporterPhone" class="form-label required-field">Seu Telefone</label>
+                            <input type="tel" class="form-control" id="reporterPhone" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="reporterEmail" class="form-label">Seu E-mail</label>
+                            <input type="email" class="form-control" id="reporterEmail">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="relationship" class="form-label required-field">Grau de Parentesco</label>
+                            <select class="form-select" id="relationship" required>
+                                <option value="">Selecione o grau de parentesco...</option>
+                                <option value="pai-mae">Pai/Mãe</option>
+                                <option value="conjuge">Cônjuge/Companheiro(a)</option>
+                                <option value="irmao">Irmão/Irmã</option>
+                                <option value="filho">Filho/Filha</option>
+                                <option value="amigo">Amigo(a)</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Missing Person Information Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-user me-2"></i>Informações da Pessoa Desaparecida
+                            </h3>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="missingPersonName" class="form-label required-field">Nome Completo</label>
+                            <input type="text" class="form-control" id="missingPersonName" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="age" class="form-label required-field">Idade</label>
+                            <input type="number" class="form-control" id="age" min="0" max="120" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="gender" class="form-label required-field">Sexo</label>
+                            <select class="form-select" id="gender" required>
+                                <option value="">Selecione o sexo...</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                                <option value="nao-informar">Prefiro não informar</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="dateOfBirth" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dateOfBirth">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nationality" class="form-label">Nacionalidade</label>
+                            <input type="text" class="form-control" id="nationality">
+                        </div>
+                    </div>
+
+                    <!-- Physical Description Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-eye me-2"></i>Descrição Física
+                            </h3>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="height" class="form-label">Altura (cm)</label>
+                            <input type="number" class="form-control" id="height" min="50" max="250">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="weight" class="form-label">Peso (kg)</label>
+                            <input type="number" class="form-control" id="weight" min="10" max="300">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="hairColor" class="form-label">Cor do Cabelo</label>
+                            <select class="form-select" id="hairColor">
+                                <option value="">Selecione a cor do cabelo...</option>
+                                <option value="preto">Preto</option>
+                                <option value="castanho">Castanho</option>
+                                <option value="loiro">Loiro</option>
+                                <option value="ruivo">Ruivo</option>
+                                <option value="grisalho">Grisalho</option>
+                                <option value="branco">Branco</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="eyeColor" class="form-label">Cor dos Olhos</label>
+                            <select class="form-select" id="eyeColor">
+                                <option value="">Selecione a cor dos olhos...</option>
+                                <option value="castanho">Castanho</option>
+                                <option value="azul">Azul</option>
+                                <option value="verde">Verde</option>
+                                <option value="mel">Mel</option>
+                                <option value="cinza">Cinza</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="distinguishingMarks" class="form-label">Sinais Particulares</label>
+                            <textarea class="form-control" id="distinguishingMarks" rows="3" placeholder="Cicatrizes, tatuagens, marcas de nascença, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Last Seen Information Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-map-marker-alt me-2"></i>Informações do Último Avistamento
+                            </h3>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastSeenDate" class="form-label required-field">Data do Último Avistamento</label>
+                            <input type="date" class="form-control" id="lastSeenDate" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastSeenTime" class="form-label">Horário do Último Avistamento</label>
+                            <input type="time" class="form-control" id="lastSeenTime">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="lastSeenLocation" class="form-label required-field">Local do Último Avistamento</label>
+                            <input type="text" class="form-control" id="lastSeenLocation" placeholder="Endereço completo ou descrição detalhada do local" required>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="clothingDescription" class="form-label">Descrição das Roupas</label>
+                            <textarea class="form-control" id="clothingDescription" rows="3" placeholder="Descreva as roupas que a pessoa estava usando quando foi vista pela última vez"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Photo Upload Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-camera me-2"></i>Upload de Foto
+                            </h3>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="photo-upload-area" onclick="document.getElementById('photoUpload').click()">
+                                <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-primary"></i>
+                                <h5>Clique para enviar foto recente</h5>
+                                <p class="text-muted mb-0">Formatos suportados: JPG, PNG, GIF (Máx. 5MB)</p>
+                                <input type="file" id="photoUpload" accept="image/*" style="display: none;" multiple>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h3 class="section-title">
+                                <i class="fas fa-info me-2"></i>Informações Adicionais
+                            </h3>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="medicalConditions" class="form-label">Condições Médicas</label>
+                            <textarea class="form-control" id="medicalConditions" rows="3" placeholder="Condições médicas, medicamentos ou necessidades especiais"></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="circumstances" class="form-label">Circunstâncias do Desaparecimento</label>
+                            <textarea class="form-control" id="circumstances" rows="3" placeholder="O que aconteceu? Há circunstâncias suspeitas?"></textarea>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="additionalInfo" class="form-label">Informações Complementares</label>
+                            <textarea class="form-control" id="additionalInfo" rows="4" placeholder="Qualquer outra informação relevante que possa ajudar a localizar esta pessoa"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Consent and Submit Section -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consentCheck" required>
+                                <label class="form-check-label" for="consentCheck">
+                                    Confirmo que as informações fornecidas são verdadeiras, pelo que sei, e autorizo que essas informações sejam utilizadas para ajudar a localizar a pessoa desaparecida. *
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="button" class="btn btn-secondary me-3" onclick="clearForm()">
+                                <i class="fas fa-undo me-2"></i>Limpar Formulário
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar Denúncia
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-check-circle me-2"></i>Denúncia Enviada com Sucesso
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                    <h4>Obrigado pela sua denúncia</h4>
+                    <p>Sua denúncia de pessoa desaparecida foi enviada com sucesso. Um número de protocolo será fornecido em breve.</p>
+                    <p><strong>Próximos passos:</strong></p>
+                    <ul class="text-start">
+                        <li>Sua denúncia será analisada por nossa equipe</li>
+                        <li>Você receberá um e-mail de confirmação com detalhes do caso</li>
+                        <li>As autoridades serão notificadas se necessário</li>
+                        <li>Você será contatado se informações adicionais forem necessárias</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form progress tracking
+        const form = document.getElementById('missingPersonForm');
+        const progressBar = document.getElementById('progressBar');
+        const requiredFields = form.querySelectorAll('[required]');
+
+        function updateProgress() {
+            let filledFields = 0;
+            requiredFields.forEach(field => {
+                if (field.value.trim() !== '') {
+                    filledFields++;
+                }
+            });
+            const progress = (filledFields / requiredFields.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        // Add event listeners to required fields
+        requiredFields.forEach(field => {
+            field.addEventListener('input', updateProgress);
+            field.addEventListener('change', updateProgress);
+        });
+
+        // Photo upload handling
+        document.getElementById('photoUpload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const uploadArea = document.querySelector('.photo-upload-area');
+            
+            if (files.length > 0) {
+                uploadArea.innerHTML = `
+                    <i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+                    <h5>${files.length} foto(s) selecionada(s)</h5>
+                    <p class="text-muted mb-0">Clique para alterar as fotos</p>
+                `;
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
+            submitBtn.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success modal
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+                
+                // Clear form after successful submission
+                setTimeout(() => {
+                    clearForm();
+                }, 2000);
+            }, 2000);
+        });
+
+        // Clear form function
+        function clearForm() {
+            form.reset();
+            updateProgress();
+            
+            // Reset photo upload area
+            const uploadArea = document.querySelector('.photo-upload-area');
+            uploadArea.innerHTML = `
+                <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-primary"></i>
+                <h5>Clique para enviar foto recente</h5>
+                <p class="text-muted mb-0">Formatos suportados: JPG, PNG, GIF (Máx. 5MB)</p>
+            `;
+        }
+
+        // Initialize progress on page load
+        updateProgress();
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+</body>
+</html>

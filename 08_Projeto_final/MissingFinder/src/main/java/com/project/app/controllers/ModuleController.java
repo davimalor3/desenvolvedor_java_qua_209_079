@@ -11,9 +11,8 @@ public class ModuleController {
     }
 
     @RequestMapping("/register")
-        public String register(){
-            return "register";
-
-        }
+    public String register() {
+        return "register";
+    }
 
 }

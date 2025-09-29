@@ -405,3 +405,26 @@
      opacity: 1;
      transform: translateY(0);
  }
+
+
+
+
+ 
+ /* Estilo base dos inputs */
+.form-control {
+    border: 2px solid rgba(94, 94, 94, 0.2); /* borda levemente visível */
+    border-radius: 8px;                  /* cantos arredondados */
+    padding: 6px 15px;                  /* mais espaço interno */
+    font-size: 1rem;                     /* texto mais legível */
+    background-color: #fff;              /* fundo branco */
+    color: #333;                         /* cor do texto */
+    transition: all 0.5s ease;           /* suaviza transições */
+}
+
+/* Quando o usuário clica no campo */
+.form-control:focus {
+    border-color: var(--secondary-color);  /* cor definida no :root */
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.3); /* brilho suave */
+    outline: none;                         /* remove contorno padrão */
+    background-color: #fff;
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="https://thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
@@ -15,100 +15,52 @@
 </head>
 
 <body>
-    <!-- HEADER /navbar -->
-    <header th:replace="fragments/navbar :: navbar"></header>
-
-    <!-- Main Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Me Encontre</h1>
-                <p class="hero-subtitle">Juntos, trazemos pessoas de volta para casa</p>
-                <p class="hero-description">
-                    Uma plataforma dedicada a ajudar famílias e autoridades na busca por pessoas desaparecidas.
-                    Cada segundo conta, e cada informação pode fazer a diferença.
-                </p>
-                <div class="cta-buttons">
-                    <a href="register" class="btn-cta btn-primary-cta">
-                        <i class="fas fa-plus me-2"></i>Registrar Desaparecimento
-                    </a>
-                    <a href="como-funciona" class="btn-cta btn-secondary-cta">
-                        <i class="fas fa-info-circle me-2"></i>Como Funciona
-                    </a>
+    <section id="como-funciona" class="features-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Como Funciona</h2>
+        <p class="section-subtitle fade-in">
+            Um processo simples e eficiente para maximizar as chances de encontrar pessoas desaparecidas
+        </p>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="feature-title">1. Registre o Caso</h3>
+                    <p class="feature-description">
+                        Preencha um formulário detalhado com informações da pessoa desaparecida,
+                        incluindo fotos e última localização conhecida.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3 class="feature-title">2. Divulgação Automática</h3>
+                    <p class="feature-description">
+                        O sistema distribui as informações para autoridades competentes e
+                        redes de apoio especializadas em localização.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">3. Mobilização Comunitária</h3>
+                    <p class="feature-description">
+                        A comunidade recebe alertas e pode contribuir com informações,
+                        ampliando o alcance da busca de forma coordenada.
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
     </section>
-
-
-
-    <!-- Features Section -->
-    <!-- <section id="como-funciona" class="features-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Como Funciona</h2>
-            <p class="section-subtitle fade-in">
-                Um processo simples e eficiente para maximizar as chances de encontrar pessoas desaparecidas
-            </p>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3 class="feature-title">1. Registre o Caso</h3>
-                        <p class="feature-description">
-                            Preencha um formulário detalhado com informações da pessoa desaparecida,
-                            incluindo fotos e última localização conhecida.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h3 class="feature-title">2. Divulgação Automática</h3>
-                        <p class="feature-description">
-                            O sistema distribui as informações para autoridades competentes e
-                            redes de apoio especializadas em localização.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="feature-title">3. Mobilização Comunitária</h3>
-                        <p class="feature-description">
-                            A comunidade recebe alertas e pode contribuir com informações,
-                            ampliando o alcance da busca de forma coordenada.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Emergency Section -->
-    <!-- <section class="emergency-section">
-        <div class="container">
-            <div class="emergency-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h2 class="emergency-title">Situação de Emergência?</h2>
-            <p class="emergency-text">
-                Em casos de risco imediato à vida ou situações suspeitas,
-                entre em contato imediatamente com as autoridades
-            </p>
-            <div class="emergency-number">190</div>
-            <p class="mt-3">Polícia Militar - Emergências</p>
-        </div>
-    </section> -->
-
-
-    <!-- FOOTER -->
-    <footer th:replace="fragments/footer :: footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -156,12 +108,12 @@
         });
 
         // Primary CTA button click handler
-        // document.querySelector('.btn-primary-cta').addEventListener('click', function (e) {
-        //     e.preventDefault();
-        //     // Aqui você pode adicionar a lógica para navegar para o formulário de registro
-        //     alert('Redirecionando para o formulário de registro de pessoa desaparecida...');
-        //     window.location.href = 'register'; // Descomente para navegar para a página de registro
-        // });
+        document.querySelector('.btn-primary-cta').addEventListener('click', function (e) {
+            e.preventDefault();
+            // Aqui você pode adicionar a lógica para navegar para o formulário de registro
+            alert('Redirecionando para o formulário de registro de pessoa desaparecida...');
+            // window.location.href = 'registro.html'; // Descomente para navegar para a página de registro
+        });
 
         // Add loading animation to buttons
         document.querySelectorAll('.btn-cta').forEach(btn => {
@@ -216,4 +168,4 @@
     </script>
 </body>
 
-</html>
+</html> -->

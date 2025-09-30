@@ -87,15 +87,23 @@ public class CrudController {
         return "redirect:/search";
     }
 
-    // // ========== READ - CRUD (ANTIGO)
-    // // list to all registred users
-    // @RequestMapping(value = "/search", method = RequestMethod.GET)
-    // public ModelAndView search(){
-    // ModelAndView mv = new ModelAndView("search");
-    // Iterable<Pessoa> users = csr.findAll();
-    // mv.addObject("users", users);
-    // return mv;
-    // }
+
+
+
+    // ========== READ - CRUD (ANTIGO)
+    // list to all registred users
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView search(){
+    ModelAndView mv = new ModelAndView("search");
+    Iterable<Pessoa> users = csr.findAll();
+    mv.addObject("users", users);
+    return mv;
+    }
+
+
+
+
+
     // CRUD CONCEPT
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String about() {

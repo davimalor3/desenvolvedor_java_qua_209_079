@@ -1,32 +1,53 @@
-package com.project.app.models;
+package com.project.app.entities;
 
 import java.io.Serializable;
+import java.util.UUID;
 
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "tb_pessoa_desaparecida")
 public class PessoaDesaparecida implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID idPessoaDesaparecida;
+
     private String nome;
-    private int idade;
+    private String data_nascimento;
     private String sexo;
     private String corPele;
     private double alturaCm;
     private double pesoKg;
+    private String caracteristicas;
+    private String informacoesAdicionais;
     private String dataDesaparecimento;
     private String localDesaparecimento;
-    private String caracteristicas;
     private String fotoUrl;
+    //TODO - Atributos para adicionar 
+    // deficiencia, tatuagem, cicatriz, parentes, orgao publico, estado civil...
+    // arvore genealógica
 
-    // Construtor
+
+    // ======== CONSTRUCTOR
     public PessoaDesaparecida() {
     }
 
-    // Getter and Setters
+
+    // ======== GETTERS AND SETTERS
+    public UUID getIdPessoaDesaparecida() {
+        return this.idPessoaDesaparecida;
+    }
+
+    public void setIdPessoaDesaparecida(UUID idPessoaDesaparecida) {
+        this.idPessoaDesaparecida = idPessoaDesaparecida;
+    }
+
     public String getNome() {
         return this.nome;
     }
@@ -35,12 +56,12 @@ public class PessoaDesaparecida implements Serializable {
         this.nome = nome;
     }
 
-    public int getIdade() {
-        return this.idade;
+    public String getData_nascimento() {
+        return this.data_nascimento;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setData_nascimento(String data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 
     public String getSexo() {
@@ -75,6 +96,22 @@ public class PessoaDesaparecida implements Serializable {
         this.pesoKg = pesoKg;
     }
 
+    public String getCaracteristicas() {
+        return this.caracteristicas;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public String getInformacoesAdicionais() {
+        return this.informacoesAdicionais;
+    }
+
+    public void setInformacoesAdicionais(String informacoesAdicionais) {
+        this.informacoesAdicionais = informacoesAdicionais;
+    }
+
     public String getDataDesaparecimento() {
         return this.dataDesaparecimento;
     }
@@ -91,14 +128,6 @@ public class PessoaDesaparecida implements Serializable {
         this.localDesaparecimento = localDesaparecimento;
     }
 
-    public String getCaracteristicas() {
-        return this.caracteristicas;
-    }
-
-    public void setCaracteristicas(String caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
-
     public String getFotoUrl() {
         return this.fotoUrl;
     }
@@ -106,5 +135,8 @@ public class PessoaDesaparecida implements Serializable {
     public void setFotoUrl(String fotoUrl) {
         this.fotoUrl = fotoUrl;
     }
+    
 
+    
+    
 }

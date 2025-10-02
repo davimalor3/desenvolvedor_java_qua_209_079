@@ -1,58 +1,189 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="https://thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
-
+<html lang="pt-br" xmlns:th="https://thymeleaf.org">
 <head>
-    <meta name="author" content="Dave" <meta charset="UTF-8">
+    <meta name="author" content="Dave">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encontre - Sistema de Pessoas Desaparecidas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-
     <link th:href="@{/css/style2.css}" rel="stylesheet" media="all">
+    <style>
+        :root {
+            --primary-color: #1976d2;
+            --secondary-color: #42a5f5;
+            --warning-color: #ff9800;
+            --accent-color: #ff5722;
+        }
 
+        .search-header {
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            padding: 60px 0 40px;
+            margin-bottom: 50px;
+        }
 
+        .search-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .person-card {
+            background: rgb(228, 228, 228);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #c9c9c9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .person-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .person-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .person-card-body {
+            padding: 25px;
+        }
+
+        .person-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+
+        .person-info {
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .person-info strong {
+            color: #1976d2;
+        }
+
+        .person-card-footer {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn-edit {
+            background: linear-gradient(45deg, #ff9800, #ffb74d);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+            color: white;
+        }
+
+        .btn-delete {
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+            color: white;
+        }
+
+        .alert-custom {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-
 <body>
     <header th:replace="fragments/navbar :: navbar"></header>
 
-    <div class="container my-5">
-        <h2 class="mb-4">Pessoas Desaparecidas</h2>
+    <div class="search-header">
+        <div class="container text-center">
+            <h1 class="search-title">
+                <i class="fas fa-search"></i> Buscar Pessoas Desaparecidas
+            </h1>
+            <p class="lead">Ajude a encontrar quem precisa voltar para casa</p>
+        </div>
+    </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="container mb-5">
+        <!-- Mensagens de feedback -->
+        <div th:if="${mensagem}" 
+             th:class="'alert alert-' + ${tipoMensagem} + ' alert-custom alert-dismissible fade show'" 
+             role="alert">
+            <i class="fas fa-check-circle" th:if="${tipoMensagem == 'success'}"></i>
+            <i class="fas fa-exclamation-triangle" th:if="${tipoMensagem == 'danger'}"></i>
+            <span th:text="${mensagem}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <div class="col" th:each="pessoa : ${pessoas}">
-                <div class="card h-100 shadow-sm">
-
-                    <!-- TODO -->
-                    <!-- MANUTENÇÃO DO CAMINHO E UPLOAD DA IMAGEM DE PESSOAS DESAPARECIDAS -->
-                    <img th:src="${pessoa.fotoUrl != null && !pessoa.fotoUrl.isEmpty() ? pessoa.fotoUrl : '/images/default-photo.png'}"
-                        class="card-img-top" alt="Foto de [[${pessoa.nome}]]"
-                        style="height: 250px; object-fit: cover;" />
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${pessoa.nome}">Nome</h5>
-                        <p class="card-text mb-1">
-                            <strong>Data de Nascimento:</strong>
+                <div class="person-card">
+                    <img th:src="@{${pessoa.fotoUrl != null && !pessoa.fotoUrl.isEmpty() ? pessoa.fotoUrl : '/img/default-photo.png'}}"
+                         th:alt="'Foto de ' + ${pessoa.nome}"
+                         onerror="this.onerror=null; this.src='/img/default-photo.png';" />
+                    
+                    <div class="person-card-body">
+                        <h5 class="person-name" th:text="${pessoa.nome}">Nome</h5>
+                        
+                        <p class="person-info">
+                            <strong><i class="fas fa-birthday-cake"></i> Data de Nascimento:</strong><br>
                             <span th:text="${pessoa.data_nascimento}">01/01/2000</span>
                         </p>
-                        <p class="card-text mb-1">
-                            <strong>Data do Desaparecimento:</strong>
+                        
+                        <p class="person-info">
+                            <strong><i class="fas fa-calendar-times"></i> Desaparecimento:</strong><br>
                             <span th:text="${pessoa.dataDesaparecimento}">10/10/2023</span>
                         </p>
-
-                        <p class="card-text">
-                            <strong>Local:</strong>
+                        
+                        <p class="person-info">
+                            <strong><i class="fas fa-map-marker-alt"></i> Local:</strong><br>
                             <span th:text="${pessoa.localDesaparecimento}">Local do desaparecimento</span>
                         </p>
+                    </div>
+                    
+                    <div class="person-card-footer">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a th:href="@{/public/editar/{id}(id=${pessoa.idPessoaDesaparecida})}" 
+                               class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a th:href="@{/public/confirmar-exclusao/{id}(id=${pessoa.idPessoaDesaparecida})}" 
+                               class="btn btn-delete">
+                                <i class="fas fa-trash"></i> Excluir
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer th:replace="fragments/footer :: footer"></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

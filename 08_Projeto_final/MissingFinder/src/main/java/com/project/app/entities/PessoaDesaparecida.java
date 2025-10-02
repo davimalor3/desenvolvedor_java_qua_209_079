@@ -3,6 +3,7 @@ package com.project.app.entities;
 import java.io.Serializable;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,22 +23,22 @@ public class PessoaDesaparecida implements Serializable {
     private String data_nascimento;
     private String sexo;
     private String corPele;
-    private double alturaCm;
-    private double pesoKg;
+    @Column(name = "altura_cm", nullable = true)
+    private Double alturaCm;
+    @Column(name = "peso_kg", nullable = true)
+    private Double pesoKg;
     private String caracteristicas;
     private String informacoesAdicionais;
     private String dataDesaparecimento;
     private String localDesaparecimento;
     private String fotoUrl;
-    //TODO - Atributos para adicionar 
+    // TODO - Atributos para adicionar
     // deficiencia, tatuagem, cicatriz, parentes, orgao publico, estado civil...
     // arvore genealógica
-
 
     // ======== CONSTRUCTOR
     public PessoaDesaparecida() {
     }
-
 
     // ======== GETTERS AND SETTERS
     public UUID getIdPessoaDesaparecida() {
@@ -80,19 +81,19 @@ public class PessoaDesaparecida implements Serializable {
         this.corPele = corPele;
     }
 
-    public double getAlturaCm() {
+    public Double getAlturaCm() {
         return this.alturaCm;
     }
 
-    public void setAlturaCm(double alturaCm) {
+    public void setAlturaCm(Double alturaCm) {
         this.alturaCm = alturaCm;
     }
 
-    public double getPesoKg() {
+    public Double getPesoKg() {
         return this.pesoKg;
     }
 
-    public void setPesoKg(double pesoKg) {
+    public void setPesoKg(Double pesoKg) {
         this.pesoKg = pesoKg;
     }
 
@@ -135,8 +136,5 @@ public class PessoaDesaparecida implements Serializable {
     public void setFotoUrl(String fotoUrl) {
         this.fotoUrl = fotoUrl;
     }
-    
 
-    
-    
 }

@@ -2,28 +2,49 @@
 <nav class="navbar navbar-expand-lg" th:fragment="navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <i class="fas fa-search me-2"></i>Me Encontre
+      <i class="fas fa-search me-2"></i>Encontre-me
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+
+        <!-- Público -->
         <li class="nav-item">
           <a class="nav-link" href="/">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/register">Registrar Desaparecido</a>
+          <a class="nav-link" href="/cadastro/desaparecido">Registrar Desaparecido</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/como-funciona">Como Funciona</a>
+          <a class="nav-link" href="/public/buscar">Buscar Pessoas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/public/buscar">Buscar</a>
+          <a class="nav-link" href="/comofunciona">Como Funciona</a>
+        </li>
+
+        <!-- Somente para login/cadastro -->
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Entrar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/cadastro-usuario">Cadastro</a>
+          <a class="nav-link" href="/register">Criar Conta</a>
         </li>
+
+        <!-- Exemplo: se logado -->
+        <!--
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            Minha Conta
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+            <li><a class="dropdown-item" href="/logout">Sair</a></li>
+          </ul>
+        </li>
+        -->
       </ul>
     </div>
   </div>

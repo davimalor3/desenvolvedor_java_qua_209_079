@@ -31,6 +31,14 @@ build/
 
 ### VS Code ###
 .vscode/
-src\main\resources\application.properties
-src/main/resources/application.properties
-application.properties
+
+# Arquivos sensíveis de chaves
+/src/main/resources/app.key
+/src/main/resources/app.pub
+
+# Configurações do Spring Boot
+/src/main/resources/application.properties
+/src/main/resources/application.yml
+
+# Outras pastas que não devem subir
+/src/main/resources/META-INF/

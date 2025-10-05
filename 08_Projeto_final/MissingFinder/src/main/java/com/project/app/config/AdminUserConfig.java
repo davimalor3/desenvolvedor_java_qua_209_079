@@ -13,6 +13,7 @@ import com.project.app.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 
+// Classe de configuração de usuário inicial admin
 @Configuration
 public class AdminUserConfig implements CommandLineRunner {
     private RoleRepository roleRepository;
@@ -32,7 +33,8 @@ public class AdminUserConfig implements CommandLineRunner {
         var roleAdmin = roleRepository.findByName(Role.Values.ADMIN.name());
         var userAdmin = userRepository.findByUsername("teste");
 
-        //
+        // verificação se usuario admin foi criado, caso não cria-se setando os parâmetros em setUsername e setPassword
+        // apos usuario e senha setados é definido os previlegios do usuario criado utilizando a entidade Role
         userAdmin.ifPresentOrElse(user -> {
             System.out.println("teste ja existe");
         },
